@@ -31,7 +31,7 @@
          `--optimize`, Enable Adam optimizer
         
    Example: 
-    ```bash
+    ```
         python train.py --epochs 30000 --batch_size 64 --patience 5 --lr 0.00125 --optimize
     ```
 
