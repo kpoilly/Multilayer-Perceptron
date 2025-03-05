@@ -5,7 +5,7 @@
 
 ## Description:
    This project focuses on implementing a Multilayer Perceptron (MLP) from scratch for binary classification of breast cancer diagnosis.
-   Learn core concepts like backpropagation and gradient descent, evaluate model performance using binary cross-entropy, and explore advanced optimization techniques.
+   Learn core concepts like backpropagation and gradient descent, evaluate model performance using binary cross-entropy, and explore advanced optimization techniques like Adam optimizer and more.
 
 
 ## Programs:
