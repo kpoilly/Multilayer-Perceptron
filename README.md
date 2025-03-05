@@ -32,7 +32,7 @@
         
    Example: 
     ```
-        python train.py --epochs 30000 --batch_size 64 --patience 5 --lr 0.00125 --optimize
+        python3 train.py --epochs 5000 --batch_size 64 --patience 5 --lr 0.00125 --optimize
     ```
 
 ### - predict.py :
