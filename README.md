@@ -42,7 +42,11 @@
    Args:
    
          `--compare`, activate the comparison mode, comparing every models saved in models/ and show their accuracy and loss in a single graph.
-    
+
+### - test.py:
+   Takes 1 line of data as a command-line argument and uses a previously trained model to give the percentage chance of each of the two possible diagnoses.
+
+   Argv: 1 line of the 30 data, just like in the dataset (without the 2 first elements).
 
 ## Packages needed:
     numpy
