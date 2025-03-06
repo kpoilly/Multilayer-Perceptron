@@ -7,6 +7,7 @@
    This project focuses on implementing a Multilayer Perceptron (MLP) from scratch for binary classification of breast cancer diagnosis.
    Learning core concepts like backpropagation and gradient descent, evaluating model performance using binary cross-entropy, and exploring advanced optimization techniques like Adam optimizer and more.
 
+   More informations about dataset [here](https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.names)
 
 ## Programs:
 ### - separate.py :
