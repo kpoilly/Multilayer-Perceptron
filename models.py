@@ -37,7 +37,17 @@ Template class for loss calculation functions
 
 class DenseLayer:
     """
- class representing a layer of the multilayer perceptron.
+class representing a layer of the multilayer perceptron.
+ 
+    Args: 
+        n_inputs, number of inputs (or output of the previous layer)
+        n_neurons, number of neurons (== number of outputs)
+        activation, activation function
+    
+    Methods:
+        forward, forward propagation's method
+        backward, backward propagation's method
+        adam_backward, backward propagation's method using Adam Optimizer
     """
     def __init__(self, n_inputs: int, n_neurons: int,
                  activation: Type[ActivationFunction]):
