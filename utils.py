@@ -161,7 +161,7 @@ def draw_comp_accuracy(networks):
         x_value = [(epoch / (len(network.val_accu) - 1)) * 100 for epoch in range(len(network.val_accu))]
         plt.plot(x_value, network.val_accu, label=f"#{network.id} Validation accuracy")
 
-    plt.xlabel("Training Porgress (%)")
+    plt.xlabel("Training Progress (%)")
     plt.ylabel("Accuracy")
     plt.title("Models' accuracy comparison")
     plt.legend()
@@ -177,7 +177,7 @@ def draw_comp_loss(networks):
         x_value = [(epoch / (len(network.val_losses) - 1)) * 100 for epoch in range(len(network.val_losses))]
         plt.plot(x_value, network.val_losses, label=f"#{network.id} Validation loss")
 
-    plt.xlabel("Training Porgress (%)")
+    plt.xlabel("Training Progress (%)")
     plt.ylabel("Loss")
     plt.title("Models' loss comparison")
     plt.legend()
