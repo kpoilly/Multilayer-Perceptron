@@ -10,6 +10,12 @@ from sklearn.model_selection import train_test_split
 def load_data(path):
     """
     Load the dataset into a NumPy array.
+
+    Args:
+        path: str, path of the dataset
+
+    Returns:
+        float: accuracy of the model
     """
     try:
         data = np.genfromtxt(path, delimiter=",", dtype=str)
@@ -24,6 +30,12 @@ def load_data(path):
 def normalize_data(data):
     """
     Normalize the dataset
+
+    Args:
+        data: np.array, dataset
+
+    Returns:
+        np.array: normalized dataset
     """
     mean = np.mean(data, axis=0)
     std_dev = np.std(data, axis=0)
@@ -33,19 +45,43 @@ def normalize_data(data):
 
 def normalize_data_spec(data, mean, std_dev):
     """
-    Normalize the dataset
+    Normalize the dataset with a given mean and std_dev.
+
+    Args:
+        data: np.array, dataset
+        mean: float, mean used to normalize the training set of the model
+        std_dev: float, standard deviation used to normalize the training set of the model
+
+    Returns:
+        np.array: normalized dataset
     """
     norm_data = (data - mean) / std_dev
     return norm_data
 
 
 def one_hot(y_true, n_outputs):
+    """
+    Returns one hot version of y_true.
+
+    Args:
+        y_true (np.array): "true" value, what the model is supposed to predict.
+        n_outputs: int, number of outputs of the current layer
+
+    Returns:
+        np.array: one hot version of y_true
+    """
     one_hot = np.zeros((len(y_true), n_outputs))
     one_hot[np.arange(len(y_true)), y_true] = 1
     return one_hot
 
 
 def save_network(network):
+    """
+    Saves the network in models/
+    
+    Args:
+        network: Object of class Network defined in models.py
+    """
     os.makedirs("models", exist_ok=True)
     files = os.listdir("models")
     model_files = [f for f in files if re.match(r"model#\d+\.pkl", f)]
@@ -57,6 +93,13 @@ def save_network(network):
 
 
 def load_network():
+    """
+    Loads the network of the given model number
+
+    note: Yes I should only give the path of the network to this function
+    and not take and validate input.
+    """
+
     nb_model = None
     while (nb_model is None):
         nb_model = input("Model number: ")
@@ -75,6 +118,9 @@ def load_network():
 
 
 def load_networks():
+    """
+    Loads every network from the models/ directory
+    """
     networks = []
 
     files = os.listdir("models")
@@ -88,13 +134,23 @@ def load_networks():
 
 
 def binary_cross_entropy(predictions, y_true):
+    """
+    Calculates the Binary Cross Entropy loss
+
+    Args:
+        predictions (np.array): predictions done by the model.
+        y_true (np.array): "true" value, what the model is supposed to predict.
+
+    Returns:
+        float: binary_cross_entropy of the model
+    """
     predictions = np.clip(predictions, 1e-15, 1 - 1e-15)
     return -np.mean(y_true * np.log(predictions[:, 1]) + (1 - y_true) * np.log(predictions[:, 0]))
 
 
 def get_accuracy(predictions, y_true):
     """
-    Calculate the accuracy of the model.
+    Calculates the accuracy of the model.
 
     Args:
         predictions (np.array): predictions done by the model.
@@ -110,6 +166,16 @@ def get_accuracy(predictions, y_true):
 
 
 def get_val_loss(network, val_X, val_y, loss_function):
+    """
+    Calculates the validation loss of the model.
+
+    Args:
+        predictions (np.array): predictions done by the model.
+        y_true (np.array): "true" value, what the model is supposed to predict.
+
+    Returns:
+        float: accuracy of the model
+    """
     oh_val_y = one_hot(val_y, 2)
 
     inputs = val_X
