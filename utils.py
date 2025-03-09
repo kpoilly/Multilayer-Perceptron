@@ -188,34 +188,28 @@ def get_val_loss(network, val_X, val_y, loss_function):
     return np.mean(val_loss), get_accuracy(inputs, val_y)
 
 
-def draw_loss(network):
+def draw_loss_accu(network):
     os.makedirs("visuals", exist_ok=True)
     plt.clf()
-    plt.figure(figsize=(10, 6))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 6))
 
-    plt.plot(network.train_losses, label="Training loss")
-    plt.plot(network.val_losses, label="Validation loss")
-    plt.xlabel("Epochs")
-    plt.ylabel("Loss")
-    plt.title("Training and Validation loss")
-    plt.legend()
-    plt.text(0.05, 0.05, network.params, transform=plt.gca().transAxes, fontsize=10, verticalalignment='bottom')
-    plt.savefig(f"visuals/model_{network.id}_loss.png")
+    ax1.plot(network.train_losses, label="Training loss")
+    ax1.plot(network.val_losses, label="Validation loss")
+    ax1.set_xlabel("Epochs")
+    ax1.set_ylabel("Loss")
+    ax1.set_title("Training and Validation loss")
+    ax1.legend()
+    ax1.text(0.05, 0.05, network.params, transform=ax1.transAxes, fontsize=10, verticalalignment='bottom')
 
+    ax2.plot(network.train_accu, label="Training accuracy")
+    ax2.plot(network.val_accu, label="Validation accuracy")
+    ax2.set_xlabel("Epochs")
+    ax2.set_ylabel("Accuracy")
+    ax2.set_title("Training and Validation accuracy")
+    ax2.legend()
 
-def draw_accu(network):
-    os.makedirs("visuals", exist_ok=True)
-    plt.clf()
-    plt.figure(figsize=(10, 6))
-
-    plt.plot(network.train_accu, label="Training accuracy")
-    plt.plot(network.val_accu, label="Validation accuracy")
-    plt.xlabel("Epochs")
-    plt.ylabel("Accuracy")
-    plt.title("Training and Validation accuracy")
-    plt.legend()
-    plt.text(0.7, 0.2, network.params, transform=plt.gca().transAxes, fontsize=10, verticalalignment='bottom')
-    plt.savefig(f"visuals/model_{network.id}_accuracy.png")
+    plt.savefig(f"visuals/model_{network.id}_loss_accuracy.png")
+    plt.close(fig) # close the figure to avoid memory issues.
 
 
 def draw_comp_accuracy(networks):

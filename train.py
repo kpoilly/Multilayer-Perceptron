@@ -3,7 +3,7 @@ import sys
 import time
 import argparse
 import numpy as np
-from utils import load_data, normalize_data, normalize_data_spec, one_hot, save_network, get_val_loss, draw_loss, draw_accu, get_accuracy
+from utils import load_data, normalize_data, normalize_data_spec, one_hot, save_network, get_val_loss, draw_loss_accu, get_accuracy
 from models import Network, DenseLayer, ReLU, Softmax, CrossEntropy
 
 
@@ -78,8 +78,7 @@ Model training using mini-batchs
 
     print(f"\nTraining ended in {time.time() - begin}s.")
     save_network(network)
-    draw_loss(network)
-    draw_accu(network)
+    draw_loss_accu(network)
 
 
 def main():
