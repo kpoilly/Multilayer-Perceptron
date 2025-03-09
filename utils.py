@@ -209,7 +209,7 @@ def draw_loss_accu(network):
     ax2.legend()
 
     plt.savefig(f"visuals/model_{network.id}_loss_accuracy.png")
-    plt.close(fig) # close the figure to avoid memory issues.
+    plt.close(fig)
 
 
 def draw_comp_accuracy(networks):
