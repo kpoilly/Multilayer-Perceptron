@@ -74,7 +74,7 @@ Model training using mini-batchs
         network.train_accu.append(get_accuracy(inputs, batch_y))
         network.train_losses.append(loss)
 
-        print(f"epoch {epoch + 1}/{epochs} - loss: {loss} - val_loss: {val_loss}")
+        print(f"epoch {epoch + 1}/{epochs} - loss: {loss} - val_loss: {val_loss} - Model Accuracy: {round(network.val_accu[-1], 5) * 100}%")
 
     print(f"\nTraining ended in {time.time() - begin}s.")
     save_network(network)
