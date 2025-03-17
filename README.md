@@ -1,6 +1,9 @@
 # Multilayer Perceptron
 
-**Final note: Not evaluated yet.**
+**Final note: 124%.**
+
+![image](https://github.com/user-attachments/assets/e8e6003d-a8de-48bd-bca8-f9fcf8b444cd)
+
 
 
 ## Description:
